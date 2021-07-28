@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RestController
 class CustomerController {
 
     @GetMapping(path= ["/customer"])
-    fun getCustomer() = "hello from a controller!"
+    fun getCustomer() = Customer(1, "Kotlin")
 }
