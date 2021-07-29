@@ -1,6 +1,6 @@
 package com.microservices.chapter3.controller
 
-import com.microservices.chapter3.Customer
+import com.microservices.chapter3.objects.Customer
 import com.microservices.chapter3.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus

@@ -1,6 +1,6 @@
 package com.microservices.chapter3.service
 
-import com.microservices.chapter3.Customer
+import com.microservices.chapter3.objects.Customer
 
 interface CustomerService {
     fun getCustomer(id: Int) : Customer?
