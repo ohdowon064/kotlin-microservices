@@ -1,5 +1,6 @@
-package com.microservices.chapter3
+package com.microservices.chapter3.service
 
+import com.microservices.chapter3.Customer
 import org.springframework.stereotype.Component
 import java.util.concurrent.ConcurrentHashMap
 
@@ -9,7 +10,8 @@ class CustomerServiceImpl : CustomerService {
         val initialCustomers = arrayOf(
             Customer(1, "Kotlin"),
             Customer(2, "Spring"),
-            Customer(3, "Microservices"))
+            Customer(3, "Microservices")
+        )
     }
 
     val customers = ConcurrentHashMap<Int, Customer>(
