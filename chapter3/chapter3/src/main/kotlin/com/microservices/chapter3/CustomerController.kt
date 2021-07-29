@@ -8,34 +8,30 @@ import java.util.concurrent.ConcurrentHashMap
 class CustomerController {
 
     @Autowired
-    lateinit var customers : ConcurrentHashMap<Int, Customer>
+    private lateinit var customerService: CustomerService // 컨트롤러에서 사용하는 빈을 서비스로 변경
+    // 컴포넌트 스캔이 빈 구현을 해당 인터페이스(CustomerService)에 주입한다.
 
-    @GetMapping(path=["/customer"])
-    fun getCustomers() = customers.map(Map.Entry<Int, Customer>::value).toList()
-
-    @GetMapping(path= ["/customer/{id}"])
-    fun getCustomer(
-        @PathVariable id: Int
-    ) = customers[id]
+    @GetMapping(path=["/customer/{id}"])
+    fun getCustomer(@PathVariable id: Int) = customerService.getCustomer(id)
 
     @PostMapping(path=["/customer"])
-    fun createCustomer(
-        @RequestBody customer: Customer
-    ): String {
-        customers[customer.id] = customer
-        return "${customer.id} customer를 생성했습니다."
+    fun createCustomer(@RequestBody customer: Customer) {
+        customerService.createCustomer(customer)
     }
 
     @DeleteMapping(path=["/customer/{id}"])
-    fun deleteCustomer(@PathVariable id: Int): String {
-        customers.remove(id)
-        return "$id customer를 삭제했습니다."
+    fun deleteCustomer(@PathVariable id: Int) {
+        customerService.deleteCustomer(id)
     }
 
     @PutMapping(path=["/customer/{id}"])
-    fun updateCustomer(@PathVariable id: Int, @RequestBody customer: Customer): String {
-        customers.remove(id)
-        customers[customer.id] = customer
-        return "$id customer를 업데이트 했습니다."
+    fun updateCustomer(@PathVariable id: Int, @RequestBody customer: Customer) {
+        customerService.updateCustomer(id, customer)
     }
+
+    @GetMapping(path= ["/customers"])
+    fun getCustomers(
+        @RequestParam(required = false, defaultValue = "") nameFilter: String
+    ) = customerService.searchCustomers(nameFilter)
+
 }
