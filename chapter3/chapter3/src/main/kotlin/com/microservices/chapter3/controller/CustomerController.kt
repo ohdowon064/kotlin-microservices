@@ -1,5 +1,6 @@
 package com.microservices.chapter3.controller
 
+import com.microservices.chapter3.advice.CustomerNotFoundException
 import com.microservices.chapter3.objects.Customer
 import com.microservices.chapter3.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,9 +17,9 @@ class CustomerController {
 
     @GetMapping(path=["/customer/{id}"])
     fun getCustomer(@PathVariable id: Int): ResponseEntity<Customer?> {
-        val customer = customerService.getCustomer(id)
-        val status = if (customer == null) HttpStatus.NOT_FOUND else HttpStatus.OK
-        return ResponseEntity(customer, status)
+        val customer = customerService.getCustomer(id) ?:
+            throw CustomerNotFoundException("customer '$id' not found")
+        return ResponseEntity(customer, HttpStatus.OK)
     }
 
     @PostMapping(path=["/customer"])
