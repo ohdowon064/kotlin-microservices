@@ -32,7 +32,7 @@ class CustomerController {
         return "$id customer를 삭제했습니다."
     }
 
-    @RequestMapping(path=["/customer/{id}"], method=[RequestMethod.PUT])
+    @PutMapping(path=["/customer/{id}"])
     fun updateCustomer(@PathVariable id: Int, @RequestBody customer: Customer): String {
         customers.remove(id)
         customers[customer.id] = customer
