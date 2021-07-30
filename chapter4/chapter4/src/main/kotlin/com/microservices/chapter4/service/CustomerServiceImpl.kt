@@ -30,10 +30,9 @@ class CustomerServiceImpl : CustomerService {
         }.map(Map.Entry<Int, Customer>::value).toFlux()
     }
 
-    override fun createCustomer(customerMono: Mono<Customer>): Mono<*> {
-        return customerMono.map {
+    override fun createCustomer(customerMono: Mono<Customer>) =
+        customerMono.map {
             customers[it.id] = it
-            Mono.empty<Any>()
+            it
         }
-    }
 }
