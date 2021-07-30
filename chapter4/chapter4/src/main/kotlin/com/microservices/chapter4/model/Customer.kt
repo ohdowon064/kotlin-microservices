@@ -7,7 +7,7 @@ data class Customer(
 
 ) {
     data class Telephone(
-        var countryNumber: String = "",
+        var countryCode: String = "",
         var telephoneNumber: String = ""
     )
 }
