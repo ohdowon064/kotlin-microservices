@@ -22,7 +22,7 @@ class CustomerServiceImpl : CustomerService {
         )
     }
 
-    override fun getCustomer(id: Int) = customers[id]?.toMono()
+    override fun getCustomer(id: Int) = customers[id]?.toMono() ?: Mono.empty()
 
     override fun searchCustomers(nameFilter: String): Flux<Customer> {
         return customers.filter {
