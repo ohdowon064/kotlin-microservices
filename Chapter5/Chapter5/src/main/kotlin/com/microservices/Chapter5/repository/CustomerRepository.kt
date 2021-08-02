@@ -2,7 +2,7 @@ package com.microservices.Chapter5.repository
 
 import com.microservices.Chapter5.database.Customer
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
-import org.springframework.data.repository.reactive.ReactiveCrudRepository
+import org.springframework.data.mongodb.core.findById
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.toMono
@@ -25,4 +25,5 @@ class CustomerRepository(private val template: ReactiveMongoTemplate) {
                         .map(Mono<Customer>::subscribe)
 
     fun create(customer: Mono<Customer>) = template.save(customer)
+    fun findById(id: Int) = template.findById<Customer>(id)
 }
