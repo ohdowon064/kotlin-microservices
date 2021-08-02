@@ -1,6 +1,7 @@
 package com.microservices.chapter4.service
 
 import com.microservices.chapter4.model.Customer
+import com.microservices.chapter4.router.CustomerExistException
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -31,8 +32,12 @@ class CustomerServiceImpl : CustomerService {
     }
 
     override fun createCustomer(customerMono: Mono<Customer>) =
-        customerMono.map {
-            customers[it.id] = it
-            it
+        customerMono.flatMap {
+            if(customers[it.id] == null) {
+                customers[it.id] = it
+                it.toMono()
+            } else {
+                Mono.error(CustomerExistException("Customer ${it.id} already Exist"))
+            }
         }
 }
