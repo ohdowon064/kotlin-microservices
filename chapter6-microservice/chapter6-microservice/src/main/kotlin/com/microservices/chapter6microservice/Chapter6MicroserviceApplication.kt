@@ -1,11 +1,11 @@
-package com.microservices.chapter6
+package com.microservices.chapter6microservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class Chapter6Application
+class Chapter6MicroserviceApplication
 
 fun main(args: Array<String>) {
-	runApplication<Chapter6Application>(*args)
+	runApplication<Chapter6MicroserviceApplication>(*args)
 }
