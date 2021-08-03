@@ -1,4 +1,4 @@
-package com.microservices.Chapter5
+package com.microservices.chapter5
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

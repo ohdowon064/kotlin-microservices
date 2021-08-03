@@ -1,4 +1,4 @@
-package com.microservices.Chapter5.database
+package com.microservices.chapter5.database
 
 import org.springframework.data.mongodb.core.mapping.Document
 

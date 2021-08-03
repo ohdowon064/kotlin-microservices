@@ -1,6 +1,6 @@
-package com.microservices.Chapter5.router
+package com.microservices.chapter5.router
 
-import com.microservices.Chapter5.handler.CustomerHandler
+import com.microservices.chapter5.handler.CustomerHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.router

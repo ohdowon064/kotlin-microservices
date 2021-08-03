@@ -1,4 +1,4 @@
-package com.microservices.Chapter5
+package com.microservices.chapter5
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

@@ -1,7 +1,7 @@
-package com.microservices.Chapter5.handler
+package com.microservices.chapter5.handler
 
-import com.microservices.Chapter5.database.Customer
-import com.microservices.Chapter5.service.CustomerService
+import com.microservices.chapter5.database.Customer
+import com.microservices.chapter5.service.CustomerService
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.BodyInserters.fromObject
