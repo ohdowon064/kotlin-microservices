@@ -1,21 +1,26 @@
 spring:
   config:
-    import: "optional:configserver:"
+    import: "optional:configserver:" 
+    # config client 기본 설정
+    # optional:configserver:http://localhost:8888과 동일. 기본 config server 포트가 8888
   application:
     name: "gateway"
 
   cloud:
     gateway:
       routes:
-        - id: greetings
-          uri: "http://localhost:64412/greetings"
+        - id: greetings # 게이트웨이가 포워딩할 마이크로서비스 이름
+          uri: "http://localhost:64412"
+          # 포워딩할 주소
+          # http://localhost8080로 요청이 들어오면 http://localhost:64412로 포워딩한다.
           predicates:
-            - Path=/greetings/**
+            - Path=/greetings/** # 게이트웨이 서버의 /greetings/**로 들어오는 요청은 greetings 서비스로 인식
 
-
+# 유레카 클라이언트 활성화
+# eureka client default 설정, 없어도 된다.
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: "http://localhost:8761/eureka"
+      defaultZone: "http://localhost:8761/eureka" # eureka server 기본포트가 8761
