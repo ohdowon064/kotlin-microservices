@@ -7,8 +7,7 @@ Spring 5와 Spring Boot 2.5를 활용해 코틀린으로 구축하는 리액티�
 
 ## Development
 <!-- 개발한 사람 누구야~ -->
-오도원
-Github : https://github.com/ohdowon064
+Github : https://github.com/ohdowon064  
 Blog : https://velog.io/@ohdowon064
 
 ## Terminal command
