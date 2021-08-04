@@ -1,6 +1,3 @@
-Spring 5와 Spring Boot 2.5를 활용해 코틀린으로 구축하는 리액티브 마이크로서비스 프로젝트입니다.  
-후안 안토니오의 [코틀린 마이크로서비스 개발]을 바탕으로 진행했습니다.
-
 # Kotlin Microservices
 
 ## Project 
