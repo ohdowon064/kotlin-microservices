@@ -32,7 +32,8 @@ class CustomerHandler(val customerService: CustomerService) {
 
     fun search(serverRequest: ServerRequest) =
         ServerResponse.ok().body(
-            customerService.searchCustomers(serverRequest.queryParam("nameFilter")
-                .orElse("")), Customer::class.java
+            customerService.searchCustomers(
+                serverRequest.queryParam("nameFilter").orElse("")
+            ), Customer::class.java
         )
 }
