@@ -92,6 +92,11 @@
 									<ports>
 										<port>8080:8080</port>
 									</ports>
+									<wait>
+										<http>
+											<url>http://localhost:8080</url>
+										</http>
+									</wait>
 								</run>
 							</image>
 						</images>
