@@ -19,7 +19,7 @@ class CustomerServiceTest {
     fun getCustomer() {
         var customer = customerService.getCustomer(1)
         assertNotNull(customer)
-        assertEquals(customer?.name, "kotlin")
+        assertEquals(customer?.name, "Kotlin")
     }
 
     @Test
