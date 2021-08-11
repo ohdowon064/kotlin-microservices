@@ -1,8 +1,8 @@
 package com.microservice.chapter9.service
 
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -10,18 +10,21 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-internal class CustomerServiceImplTest {
+class CustomerServiceTest {
 
     @Autowired
-    lateinit var customerServiceImpl: CustomerServiceImpl
+    lateinit var customerService: CustomerService
 
     @Test
     fun getCustomer() {
-        customerServiceImpl.getCustomer(1)
+        var customer = customerService.getCustomer(1)
+        assertNotNull(customer)
+        assertEquals(customer?.name, "kotlin")
     }
 
     @Test
     fun getAllCustomers() {
-        customerServiceImpl.getAllCustomers()
+        val customers = customerService.getAllCustomers()
+        assertEquals(customers.size, 3)
     }
 }
