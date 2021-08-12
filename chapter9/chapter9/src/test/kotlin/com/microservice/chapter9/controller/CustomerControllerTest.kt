@@ -6,7 +6,9 @@ import org.junit.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.runner.RunWith
 import org.mockito.BDDMockito.given
+import org.mockito.BDDMockito.then
 import org.mockito.Mockito.reset
+import org.mockito.Mockito.times
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -44,6 +46,9 @@ class CustomerControllerTest {
             .andExpect(jsonPath("\$.name").value("Kotlin"))
             .andDo(print())
 
+        then(customerService).should(times(1)).getCustomer(1)
+        then(customerService).shouldHaveNoMoreInteractions()
+
         reset(customerService)
     }
 
@@ -60,6 +65,10 @@ class CustomerControllerTest {
             .andExpect(jsonPath("\$[1].id").value(2))
             .andExpect(jsonPath("\$[1].name").value("mocks"))
             .andDo(print())
+
+        // getAllCustomers() 메서드가 한번만 호출되었는지 확인
+        then(customerService).should(times(1)).getAllCustomers()
+        then(customerService).shouldHaveNoMoreInteractions()
 
         reset(customerService)
     }
